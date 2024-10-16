@@ -1,0 +1,33 @@
+//テキストエリアの高さを設定
+textarea.form-control {
+    max-height: 360px;
+}
+
+//スマホのレイアウトを縦おきに
+@media(maxwidth: 640px) {
+    thead{
+        display: block;
+        float: left;
+        width: 30%;
+    }
+    tbody{
+        display: block;
+        float: left;
+        width: 70%;
+    }
+}
+
+//input fileが消えるので対応
+.form-group input[type=file] {
+	opacity: 1;
+}
+
+
+/** サイドメニューのアコーディオン部 */
+li.accordion {
+    list-style: none;
+    text-align: -1em;
+}
+
+
+

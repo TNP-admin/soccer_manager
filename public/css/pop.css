@@ -1,0 +1,115 @@
+div.popset {
+    display: flex;
+}
+
+div.row_input_style {
+    display:flex;
+    flex-flow: column;
+    justify-content:space-between;
+}
+
+canvas {
+    margin: 0px 10px 0px 0px;
+    border:3px solid #000;
+  }
+
+#avatar {
+    display: none;
+}
+
+table.pop_table {
+    margin: 0px 0px 10px 10px;
+    width: 160px;
+    height: 1320px;
+    border:1px solid #000;
+    border-collapse: separate;
+    border-spacing: 3px;
+}
+
+td.pallete01 {
+    background-color: #E60012;
+}
+
+td.pallete02 {
+    background-color: #F39800;
+}
+
+td.pallete03 {
+    background-color: #FFF100;
+}
+
+td.pallete04 {
+    background-color: #8FC31F;
+}
+
+td.pallete05 {
+    background-color: #009944;
+}
+
+td.pallete06 {
+    background-color: #009E96;
+}
+
+td.pallete07 {
+    background-color: #00A0E9;
+}
+
+td.pallete08 {
+    background-color: #0068B7;
+}
+
+td.pallete09 {
+    background-color: #1D2088;
+}
+
+td.pallete10 {
+    background-color: #920783;
+}
+
+td.pallete11 {
+    background-color: #E4007F;
+}
+
+td.pallete12 {
+    background-color: #000000;
+}
+
+td.pallete13 {
+    background-color: #FFFAF0;
+}
+
+div.radio_line_width {
+    display: block;
+}
+
+label.label_radio {
+    display:block;
+    position:relative;
+    padding-left:1em;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+button.button_reset {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    width: 160px;
+    height: 120px;
+    color: #ffffff;
+    background-color: #00ced1;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+input.button_submit {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    width: 160px;
+    height: 120px;
+    color: #ffffff;
+    background-color: #00ced1;
+    font-weight: bold;
+    font-size: 12px;
+}

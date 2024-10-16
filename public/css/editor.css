@@ -1,0 +1,8 @@
+.editor {
+    min-height: 300px;
+    border: thin solid;
+    margin: 10px 5px 10px 0px;
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
+    border-color: #DDDDDD;
+}

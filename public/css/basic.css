@@ -1,0 +1,644 @@
+
+body {
+    background-color:#f4f4f4;
+    margin:0;
+}
+
+#page-title {
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+#page-header {
+    background-image: url(../img/page-header.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    margin: 30px auto;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.3);
+    background-blend-mode: darken;
+}
+
+/** textarea改行用 */
+p.p_textarea {
+    white-space: pre-wrap;
+}
+
+/** blog_topサムネイル用 */
+img.blog_top_img {
+    height: 90px;
+}
+
+/** blog_top */
+div.upper {
+    font-size: 0.8em;
+}
+
+div.lower {
+    font-size: 1.5em;
+}
+
+td.blog_top_left {
+    width: 40%;
+}
+
+td.blog_top_right {
+    width: 60%;
+}
+
+/**カレンダー枠start */
+#calendar {
+    padding:30px;
+}
+.fc-view-container {
+    background-color:#ffffff;
+}
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+    font-size: 12px;
+}
+.fc-today-button {
+    display:none !important;
+}
+.fc .fc-toolbar-title {
+    font-size: 14px !important;
+}
+
+
+/**カレンダーのセルサイズ指定*/
+.fc-basic-view .fc-body .fc-row {
+   min-height: 37px !important;
+   height: 37px !important;
+}
+
+
+.fc-toolbar.fc-header-toolbar h2{
+    font-size: 18px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.fc .fc-toolbar > * > * {
+    float: left;
+    margin-left: .75em;
+}
+.fc-toolbar h2 {
+    margin: 0;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+input.input_width_change {
+  width: 70%;
+}
+
+/**カレンダー枠end */
+
+/** 過去一週間start */
+ul.date-slide-list {
+    padding-left:20px;
+    list-style:none;
+    margin:0px;
+    text-align:center;
+}
+ul.date-slide-list li{
+    margin:10px 0;
+}
+ul.date-slide-list li a{
+  text-decoration: none;
+  color:#666666;
+}
+/** 過去一週間枠end */
+
+/*
+874px以上
+ Header PC・タブレット対応
+ */
+ @media screen and (min-width:874px){
+
+/*==================================================
+共通　横並びのための設定
+===================================*/
+
+  .gnavi{
+    display: flex;
+    flex-wrap: wrap;/*スマホ表示折り返し用なのでPCのみなら不要*/
+    margin:0 0 50px 0;
+    list-style: none;
+  }
+
+  .gnavi li a{
+    display: block;
+    padding:10px 30px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .gnavi li{
+    margin-bottom:20px;
+  }
+
+/*==================================================
+　5-3-4 左から右に線が伸びる（上部）
+===================================*/
+  .gnavi li a{
+    /*線の基点とするためrelativeを指定*/
+    position: relative;
+  }
+
+  .gnavi li.current a,
+  .gnavi li a:hover{
+    color:#0481A2;
+  }
+
+  .gnavi li a::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    top: 0;
+    left: 10%;
+    /*線の形状*/
+    width: 80%;
+    height: 2px;
+    background:#0481A2;
+    /*アニメーションの指定*/
+    transition: all .3s;
+    transform: scale(0, 1);/*X方向0、Y方向1*/
+    transform-origin: left top;/*左上基点*/
+  }
+
+/*現在地の形状の設定*/
+  .gnavi li.current a::after {
+    transform: scale(0.2, 1);/*X方向に0.2スケール拡大*/
+  }
+
+/*現在地を含むhoverの設定*/
+  .gnavi li.current a:hover::after,
+  .gnavi li a:hover::after {
+    transform: scale(1, 1);/*X方向にスケール拡大*/
+  }
+
+/*ログインボタン*/
+  .header-nav {
+    position: relative;
+  }
+
+  a.header_btn_pc {
+    position: absolute;
+    float: right;
+    bottom: 20%;
+    right: 6%;
+    margin-left: 30px;
+  }
+
+  a.header_btn_sp {
+    display: none;
+  }
+
+  li.login_text {
+    display: none;
+  }
+
+}
+/*PC・タブレット対応ここまで*/
+
+/*
+873px以下
+ Header SP対応
+ */
+@media screen and (max-width:873px){
+/*========= ナビゲーションのためのCSS ===============*/
+
+  #g-nav{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+    /*ナビのスタート位置（表示しないよう-120%で設定）と形状*/
+    top:-120%;
+    left:0;
+    width:100%;
+    height: 100vh;/*ナビの高さ*/
+    background:#999;
+    /*動き*/
+    transition: all 0.6s;
+  }
+
+/*アクティブクラスがついたら位置を0に*/
+  #g-nav.panelactive{
+    top: 0;
+  }
+
+/*ナビゲーションの縦スクロール*/
+  #g-nav.panelactive #g-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+/*ナビゲーション*/
+  #g-nav ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+
+/*リストのレイアウト設定*/
+
+  #g-nav li{
+    list-style: none;
+    text-align: center; 
+  }
+
+  #g-nav li a{
+	color: #333;
+	text-decoration: none;
+	padding:10px;
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-weight: bold;
+  }
+
+/*========= ボタンのためのCSS ===============*/
+  .openbtn{
+    position:fixed;
+    z-index: 9999;/*ボタンを最前面に*/
+    top: 25px;
+    right: 5%;
+    cursor: pointer;
+    width: 50px;
+    height:50px;
+  }
+	
+/*×に変化*/	
+  .openbtn span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    width: 45%;
+  }
+
+  .openbtn span:nth-of-type(1) {
+	top:15px;	
+  }
+
+  .openbtn span:nth-of-type(2) {
+	top:23px;
+  }
+
+  .openbtn span:nth-of-type(3) {
+	top:31px;
+  }
+
+  .openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+  }
+
+  .openbtn.active span:nth-of-type(2) {
+	opacity: 0;
+  }
+
+  .openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+  }
+
+/*ログインボタン*/
+  a.header_btn_pc {
+    display: none;
+  }
+
+  a.header_btn_sp {
+    width: 90vw;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+}
+/*SP対応ここまで*/
+
+/*
+1100px以下
+ タブレット
+ */
+@media screen and (max-width:1100px){
+  #main-block {
+    width:90%;
+    margin:0 auto;
+  }
+
+  .main-column {
+    float: left;
+    width: 100%;
+  }
+
+  .info_always_0 {
+    display:inline-block;
+    padding: 0.5em;
+    font-size: 60%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #009900;
+  }
+
+  .info_always_1 {
+    display:inline-block;
+    padding: 0.5em;
+    font-size: 60%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #000000;
+  }
+
+  .info_always_2 {
+    display:inline-block;
+    padding: 0.5em;
+    font-size: 60%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #FF0000;
+  }
+
+  .info_table_1 {
+    width: 150px;
+  }
+
+  .info_table_2 {
+    width: 80px;
+  }
+
+  .blog_category_0 {
+    display:inline-block;
+    padding: 0.5em;
+    font-size: 60%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #009900;
+  }
+
+  .blog_table_1 {
+    width: 150px;
+  }
+  
+  .blog_table_2 {
+    width: 150px;
+  }
+    
+  .blog_table_3 {
+    width: 80px;
+  }
+
+}
+/*
+ 1100px以上
+ PC
+ */
+@media screen and (min-width:1101px){
+  #main-block {
+    width:1100px;
+    margin:0 auto;
+  }
+
+  .main-column {
+    float: left;
+    width: 100%;
+  }
+
+  .info_always_0 {
+    display:inline-block;
+    padding: 0.5em;
+    font-size: 60%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #009900;
+  }
+
+  .info_always_1 {
+    display:inline-block;
+    padding: 0.5em;
+    font-size: 60%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #000000;
+  }
+
+  .info_always_2 {
+    display:inline-block;
+    padding: 0.5em;
+    font-size: 60%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #FF0000;
+  }
+
+  .info_table_1 {
+    width: 150px;
+  }
+
+  .info_table_2 {
+    width: 80px;
+  }
+
+  .blog_category_0 {
+    display:inline-block;
+    padding: 0.5em;
+    font-size: 60%;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #009900;
+  }
+
+  .blog_table_1 {
+    width: 150px;
+  }
+  
+  .blog_table_2 {
+    width: 150px;
+  }
+    
+  .blog_table_3 {
+    width: 80px;
+  }
+
+}
+
+/*
+ 480px以上
+ SP
+ */
+@media screen and (min-width:481px){
+
+  #page-header img {
+      width: 32%;
+      margin: 0 auto;
+      display: block;
+  }
+
+  #page-header {
+    height: 380px;
+  }
+
+  #page-title {
+    font-size: 35px;
+    margin:50px 0;
+  }
+
+  .nobel_title {
+    margin: 10px;
+  }
+
+  .nobel_publish {
+    display: flex;
+    margin: 10px 0;
+  }
+
+  .nobel_calli {
+    margin: 5px;
+    border: 0.5px solid silver;
+  }
+
+  .nobel_caption {
+    margin: 5px;
+  }
+}
+
+/*
+ 480px以下
+ SP
+ */
+@media screen and (max-width:480px){
+  #page-header {
+    height: 270px;
+  }
+
+  #page-header img {
+      width: 70%;
+      margin: 0 auto;
+      display: block;
+  }
+
+  #page-title {
+    font-size: 22px;
+    margin:47px 0 0;
+  }
+
+  h1#home_score {
+    font-size: 32px ;
+  }
+
+  h4.card-title {
+    font-size: 32px ;
+  }
+
+  h1#away_score {
+    font-size: 32px ;
+  }
+
+  .blog-entry {
+    display: grid;
+    grid-template-columns: 35% 60%;
+    justify-content: space-between;
+    row-gap: 60px;
+    margin:40px 0 40px 0;
+  }
+
+.info_table_1 {
+    width: 120px;
+}
+
+.info_table_2 {
+    display: none;
+}
+
+.blog_table_1 {
+    display: none;
+}
+    
+.blog_table_2 {
+    width: 120px;
+}
+
+.blog_table_3 {
+    display: none;
+}
+    
+  .nobel_title {
+    position: relative;
+    height: 150px;
+    margin: 10px;
+    object-fit: cover;
+  }
+
+  .nobel_calli {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0.5px solid silver;
+  }
+
+  .nobel_caption {
+    text-align: center;
+    margin: 5px;
+  }
+}
+
+/**ページング*/
+#pager {
+    text-align:center;
+    margin:60px 0;
+}
+#pager a{
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    color: #666666;
+}
+#pager span.back{
+    border: 1px solid #ccc;
+}
+#pager span{
+    padding:10px;
+    margin: 0 2px;
+    color: #666666;
+}
+#pager .current{
+    background-color:#666666;
+    color:#ffffff;
+}
+
+footer {
+    clear:both;
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid #ccc;
+    margin-top: 40px;
+    color: #666666;
+    font-size: 88%;
+}

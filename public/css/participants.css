@@ -1,0 +1,45 @@
+/** ファイルを選択ボタンカスタマイズ */
+input.pop_input {
+    display: none;
+}
+
+a.manual_input_label {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #384878;
+    font: bold;
+    cursor: pointer;
+}
+
+input.cap_file {
+    display: none;
+}
+
+label.cap_flie_label {
+    margin: 10px 10px;
+    padding: 11px 21px;
+    border-radius: 3px;
+    width: 105px;
+    height: 40px;
+    color: #ffffff;
+    background-color: #48d1cc;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+img.pop_image {
+    height: 80px;
+}
+
+/** td内のボタンを整列 */
+td.td_button {
+    text-align: left;
+    vertical-align: middle;
+}
+
+/** input fileが消えるので対応
+.form-group input[type=file] {
+	opacity: 1;
+} */
